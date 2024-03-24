@@ -1,9 +1,14 @@
 # pano-to-mesh-server
 On-premise of pano-to-mesh
 
+
 # DB Schema 
 ```mermaid
 erDiagram
+    User {
+        string id PK
+        string name
+    }
     Room {
         string id PK
         object decorations
@@ -24,20 +29,9 @@ erDiagram
         string panoInfo_id FK
     }
 
-    Room-PanoInfo {
-        string room_id PK, FK
-        string panoInfo_id PK, FK
-    }
-
-    User {
-        string id PK
-        string name
-    }
-    
-    PanoInfo ||--|{ Room-PanoInfo : used
-    Room ||--|{ Room-PanoInfo : contains
-    PanoInfo ||--o{ Texture: has
-    PanoInfo ||--|| Layout: has
-    User ||--o{ Room: has
-    User ||--o{ PanoInfo: has
+    User }|--o{ Room: "Has"
+    PanoInfo ||--o{ Room : "Has"
+    PanoInfo ||--o{ Texture: "Has"
+    PanoInfo ||--|| Layout: "Has"
+    User ||--o{ PanoInfo: "Has"
 ```
