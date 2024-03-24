@@ -11,16 +11,16 @@ services:
   server:
     build: ./server
     command: python app.py
+    environment:
+        DB_URI: mysql+pymysql://root:${DB_PASSWORD}@db/${DB_NAME}
     volumes:
       - ./server:/app
 
   db:
     image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: my_secret_password
-      MYSQL_DATABASE: app_db
-      MYSQL_USER: db_user
-      MYSQL_PASSWORD: db_user_pass
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
     ports:
       - "6033:3306"
     volumes:
