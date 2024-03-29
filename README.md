@@ -1,6 +1,12 @@
 # pano-to-mesh-server
 On-premise of pano-to-mesh
 
+# Quick start
+
+- Run service by `docker-compose up -d`.
+- Initialize db by `docker-compose exec server flask db upgrade`.
+- Shut down service by `docker-compose down`.
+
 
 # DB Schema 
 ```mermaid
