@@ -6,5 +6,7 @@ COPY . /app
 
 RUN pip install --no-cache-dir --upgrade pip
 
-#RUN pip install Flask PyMySQL flask-sqlalchemy Flask-Migrate cryptography
+#RUN pip install Flask PyMySQL flask-sqlalchemy Flask-Migrate cryptography Flask-Testing
 RUN pip install --no-cache-dir -r requirements.txt
+
+RUN python test.py
