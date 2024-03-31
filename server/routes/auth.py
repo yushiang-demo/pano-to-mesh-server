@@ -1,9 +1,9 @@
 from flask import Blueprint
 from models.user import User
-from extensions import db
+from app.extensions import db
 
-api_bp = Blueprint('api', __name__)
+auth_bp = Blueprint('auth', __name__)
 
-@api_bp.route("/")
+@auth_bp.route("/")
 def hello():
     return "Hello, World!"

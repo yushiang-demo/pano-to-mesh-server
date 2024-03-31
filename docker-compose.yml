@@ -10,7 +10,7 @@ services:
 
   server:
     build: ./server
-    command: ./wait-for-it.sh db:3306 --strict -- bash -c "flask db upgrade && python app.py"
+    command: ./wait-for-it.sh db:3306 --strict -- bash -c "FLASK_APP=main.py flask db upgrade && python main.py"
     environment:
         DB_URI: mysql+pymysql://root:${DB_PASSWORD}@db/${DB_NAME}
     volumes:
